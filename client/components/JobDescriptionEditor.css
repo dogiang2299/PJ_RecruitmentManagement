@@ -1,0 +1,47 @@
+/* JobDescriptionEditor.css */
+.editor-container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.toolbar button {
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.toolbar button.active {
+  background: #e0e0e0;
+  font-weight: bold;
+}
+
+.editor-content {
+  min-height: 150px;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #9ca3af; /* xám nhạt */
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.toolbar input{
+  outline: none;
+}
+/* Xóa viền đen khi focus vào editor */
+.ProseMirror:focus {
+  outline: none;
+}
