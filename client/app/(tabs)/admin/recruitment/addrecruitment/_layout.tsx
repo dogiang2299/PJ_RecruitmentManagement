@@ -23,7 +23,6 @@ export default function LayoutAddRecruitment(){
         { path: "/(tabs)/admin/recruitment/addrecruitment/addRecruitment", icon: Edit, label: 'Thông tin tuyển dụng'},
         { path: "/(tabs)/admin/recruitment/addrecruitment/implementation_plan", icon: KeHoach, label: 'Kế hoạch thực hiện'},
         { path: "/(tabs)/admin/recruitment/addrecruitment/application_form", icon: MauUngTuyen, label: 'Mẫu ứng tuyển'},
-        { path: "/(tabs)/admin/recruitment/addrecruitment/create_new_page", icon: TaoTrangTin, label: 'Tạo trang tin'},
         { path: "/(tabs)/admin/recruitment/addrecruitment/recruitment_channel", icon: KenhTuyenDung, label: 'Kênh tuyển dụng'},
         { path: "/(tabs)/admin/recruitment/addrecruitment/recruitment_process", icon: QuyTrinhTuyenDung, label: 'Quy trình tuyển dụng'},
         { path: "/(tabs)/admin/recruitment/addrecruitment/recruitment_board", icon: HoiDongTuyenDung, label: 'Hội đồng tuyển dụng'},
@@ -50,7 +49,7 @@ export default function LayoutAddRecruitment(){
         <View style={{flex: 1, flexDirection: 'row',
           top: 0,
           left: 0,
-          right: 0,  height: 64, width: '100%', position: 'sticky',shadowColor: "#000",
+          right: 0,  height: 64, width: '100%', position: 'sticky',shadowColor: "#00000",
           shadowOffset: { width: 0, height: 2 },
           shadowOpacity: 0.1,
           

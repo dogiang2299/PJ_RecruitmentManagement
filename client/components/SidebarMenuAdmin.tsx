@@ -13,7 +13,7 @@ import Question from '../assets/images/question.svg';
 import Bell from '../assets/images/bell.svg';
 import User from '../assets/images/user.svg'
 const backgroundShibar =
-  "https://amisplatform.misacdn.net/apps/recruit/sidebar-2.9.31300457ad0aaf7d.png";
+  "https://amisplatform.misacdn.net/apps/recruit/event-sidebar.8355fa013573cdcf.png";
 
 const gradientColors = ['rgba(0, 0, 0, 0.8)', 'rgba(255, 255, 255, 0.4)'] as const;
 
@@ -62,7 +62,8 @@ const menuItems = [
   },
   {
     title: "Thiết lập",
-    path: "/(tabs)/admin/recruitment/settings",
+    // C:\Users\Do Zang\Documents\Project_HRManagement_\client\app\(tabs)\admin\recruitment\setting\account\connect.tsx
+    path: "/(tabs)/admin/recruitment/setting/account/customize_display",
     icon: "settings-outline",
     iconActive: "settings",
   },
@@ -101,97 +102,100 @@ export default function SidebarMenuAdmin() {
   return (
     <View style={{ flex: 1, backgroundColor: "#f8f9fa" }}>
       {/* Navbar trên cùng */}
-      <View
-        style={{
-          height: 50,
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          paddingHorizontal: 12,
-          backgroundColor: "#fff",
-          // iOS shadow
-          shadowColor: "#000",
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.2,
-          shadowRadius: 3,
+{/* Navbar trên cùng */}
+        <View
+          style={{
+    backgroundColor: '#FFFFFF',
+    padding: 10,
+    overflow: 'hidden', // tránh shadow bị cắt
+    // Shadow iOS
+    shadowColor: '#000',
+    shadowOffset: {
+        width: 0,
+        height: 4,
+    },
+    shadowOpacity: 0.12,
+    shadowRadius: 6,
+    // Shadow Android
+    elevation: 8,
 
-          // Android shadow
-          elevation: 4,
-        }}
-      >
-        <View style={{flexDirection:'row'}}>
-                  {menuNavbarLeft.map((itemleft, index) => (
-            <TouchableOpacity
-              key={itemleft.path || index}
-              onPress={() => router.push(itemleft.path as any)}
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                paddingHorizontal: 4,
-                paddingVertical: 4,
-                marginRight: index < menuNavbarRight.length - 1 ? 5 : 0,
-              }}
-            >
-              {itemleft.iconSvg ? (
-                <itemleft.iconSvg width={25} height={25} fill="#FFFFFF" />
-              ) : (
-                <Ionicons name={itemleft.icon as any} size={20} color="#1e2633" />
-              )}
+            height: 50,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingHorizontal: 12,
+           
+          }}
+        >
+          <View style={{flexDirection:'row'}}>
+            {menuNavbarLeft.map((itemleft, index) => (
+              <TouchableOpacity
+                key={itemleft.path || index}
+                onPress={() => router.push(itemleft.path as any)}
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  paddingHorizontal: 4,
+                  paddingVertical: 4,
+                  marginRight: index < menuNavbarRight.length - 1 ? 5 : 0,
+                }}
+              >
+                {itemleft.iconSvg ? (
+                  <itemleft.iconSvg width={25} height={25} fill="#1e2633" />
+                ) : (
+                  <Ionicons name={itemleft.icon as any} size={20} color="#1e2633" />
+                )}
 
-              {itemleft.title && (
-                <Text
-                  style={{
-                    fontSize: 18,
-                    fontWeight: "700",
-                    color: "#1e2633",
-                    marginLeft: 8,
-                  }}
-                >
-                  {itemleft.title}
-                </Text>
-              )}
-            </TouchableOpacity>
-        ))}
+                {itemleft.title && (
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      fontWeight: "700",
+                      color: "#1e2633",
+                      marginLeft: 8,
+                    }}
+                  >
+                    {itemleft.title}
+                  </Text>
+                )}
+              </TouchableOpacity>
+            ))}
+          </View>
+          <View style={{flexDirection:'row', gap: 5}}>
+            {menuNavbarRight.map((itemright, index) => (
+              <TouchableOpacity
+                key={itemright.path || index}
+                onPress={() => router.push(itemright.path as any)}
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  paddingHorizontal: 8,
+                  paddingVertical: 4,
+                  marginRight: index < menuNavbarRight.length - 1 ? 5 : 0,
+                }}
+              >
+                {itemright.iconSvg ? (
+                  <itemright.iconSvg width={25} height={25} fill="#1e2633" />
+                ) : (
+                  <Ionicons name={itemright.icon as any} size={20} color="#1e2633" />
+                )}
 
+                {itemright.title && (
+                  <Text
+                    style={{
+                      fontSize: 14,
+                      fontWeight: "500",
+                      color: "#1e2633",
+                      marginLeft: 8,
+                    }}
+                  >
+                    {itemright.title}
+                  </Text>
+                )}
+              </TouchableOpacity>
+            ))}
+          </View>
         </View>
-        <View style={{flexDirection:'row', gap: 5}}>
-                  {menuNavbarRight.map((itemright, index) => (
-            <TouchableOpacity
-              key={itemright.path || index}
-              onPress={() => router.push(itemright.path as any)}
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                paddingHorizontal: 8,
-                paddingVertical: 4,
-                marginRight: index < menuNavbarRight.length - 1 ? 5 : 0,
-              }}
-            >
-              {itemright.iconSvg ? (
-                <itemright.iconSvg width={25} height={25} fill="#FFFFFF" />
-              ) : (
-                <Ionicons name={itemright.icon as any} size={20} color="#1e2633" />
-              )}
-
-              {itemright.title && (
-                <Text
-                  style={{
-                    fontSize: 14,
-                    fontWeight: "500",
-                    color: "#1e2633",
-                    marginLeft: 8,
-                  }}
-                >
-                  {itemright.title}
-                </Text>
-              )}
-            </TouchableOpacity>
-        ))}
-
-        </View>
-
-      </View>
-
       {/* Nội dung chính */}
       <View style={{ flex: 1, flexDirection: "row" }}>
         {/* Sidebar */}
@@ -250,9 +254,7 @@ export default function SidebarMenuAdmin() {
 
         {/* Nội dung slot chính */}
         <View style={{ flex: 1 }}>
-          <ScrollView style={{ flex: 1 }}>
             <Slot />
-          </ScrollView>
         </View>
       </View>
     </View>

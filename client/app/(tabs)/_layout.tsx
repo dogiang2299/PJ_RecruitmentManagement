@@ -26,35 +26,28 @@ export default function TabLayout() {
           default: {},
         }),
       }}>
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          // Không cần khai báo lại tabBarStyle ở đây nữa
         }}
-      />
+      /> */}
       <Tabs.Screen
         name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
+        options={{}}
       />
       <Tabs.Screen
         name="admin/recruitment"
-        options={{
-          tabBarStyle: { display: 'none' },
-          headerShown: false,
-        }}
-      ></Tabs.Screen>
-           <Tabs.Screen
-  name="auth"
-  options={{
-    tabBarStyle: { display: 'none' },
-    headerShown: false,
-  }}
-/>
-
+        options={{}}
+      />
+      <Tabs.Screen
+        name="auth"
+        options={{}}
+      />
+      <Tabs.Screen
+        name="(tabs)/application"
+        options={{}}
+      />
 
     </Tabs>
   );

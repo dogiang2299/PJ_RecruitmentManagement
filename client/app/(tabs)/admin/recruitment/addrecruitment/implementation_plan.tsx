@@ -29,11 +29,11 @@ import { ScrollArea } from "@mantine/core";
 
 export default function ImplementationForm() {
     
-  const [date, setDate] = useState(new Date());
-  const [show, setShow] = useState(false);
   const [checked, setChecked] = useState(false);
   const [count, setCount] = useState(1);
   const [recruitments, setRecruitments] = useState([{ name: '', count: 1 }]);
+  const [date, setDate] = useState(new Date());
+  const [show, setShow] = useState(false);
   const onChange = (event: any, selectedDate?: Date) => {
     if (Platform.OS !== "web") {
       // chỉ mobile mới dùng picker
