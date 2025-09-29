@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "react-native";
+import { Checkbox } from 'react-native-paper';
 import {
   TouchableOpacity,
   TextInput,
@@ -93,6 +94,7 @@ const optionFunction: OptionFunction[] = [
     { icon: Delete, label: "Xoá" },
   ];
   
+      const [checked, setChecked] = React.useState(false);
 
   const [visibleFunction, setVisibleFunction] = useState(false);
   const [functions, setFunctions] = useState<string>("");
@@ -104,6 +106,9 @@ const optionFunction: OptionFunction[] = [
     { label: "Tiêu đề tin", value: "Tiêu đề tin" },
     { label: "Đơn vị sử dụng", value: "Đơn vị sử dụng" },
   ]);
+  //#region CONNECT API
+  //#endregion CONNECT API
+
   return (
     <View style={{ flexDirection: "column", gap: 5, paddingVertical: 30, paddingHorizontal: 15}}>
       {/* Header */}
@@ -235,9 +240,10 @@ const optionFunction: OptionFunction[] = [
         <View style={styles.card}>
           {/* Header */}
           <View style={styles.header}>
-            <TouchableOpacity style={styles.checkbox}>
-              <Ionicons name="checkbox-outline" size={24} color="#7A8188" />
-            </TouchableOpacity>
+            <Checkbox
+                          status={checked ? 'checked' : 'unchecked'}
+                          onPress={() => setChecked(!checked)}
+                        /> 
             <View style={{ flex: 1, marginLeft: 8 }}>
               <Text style={styles.title}>Business Analysis</Text>
               <View style={styles.subInfo}>
@@ -256,19 +262,7 @@ const optionFunction: OptionFunction[] = [
                   <Text style={styles.subText}>
                     • Hạn nộp hồ sơ: <Text style={styles.dark}>03/11/2025</Text>
                   </Text>
-                  <TouchableOpacity>
-                    <Text
-                      style={{
-                        backgroundColor: "#2680EB",
-                        paddingHorizontal: 6,
-                        paddingVertical: 4,
-                        color: "#FFFFFF",
-                        borderRadius: 6,
-                      }}
-                    >
-                      Xem thêm
-                    </Text>
-                  </TouchableOpacity>
+                  
                 </View>
               </View>
             </View>
@@ -314,30 +308,34 @@ const optionFunction: OptionFunction[] = [
 
           {/* Stats row */}
           <View style={styles.statsRow}>
-            <View style={[styles.statItem]}>
+            <TouchableOpacity style={[styles.statItem]}>
               <Text style={styles.statNumber}>2</Text>
               <Text style={styles.statLabel}>Ứng tuyển</Text>
-            </View>
+            </TouchableOpacity>
             <Border />
-            <View style={[styles.statItem]}>
+
+            <TouchableOpacity style={[styles.statItem]}>
               <Text style={styles.statNumber}>1</Text>
               <Text style={styles.statLabel}>Thi tuyển</Text>
-            </View>
+            </TouchableOpacity>
             <Border />
-            <View style={[styles.statItem]}>
+
+            <TouchableOpacity style={[styles.statItem]}>
               <Text style={styles.statNumber}>3</Text>
               <Text style={styles.statLabel}>Phỏng vấn</Text>
-            </View>
+            </TouchableOpacity>
             <Border />
-            <View style={[styles.statItem]}>
+
+            <TouchableOpacity style={[styles.statItem]}>
               <Text style={styles.statNumber}>1</Text>
               <Text style={styles.statLabel}>Offer</Text>
-            </View>
+            </TouchableOpacity>
             <Border />
-            <View style={[styles.statItem]}>
+
+            <TouchableOpacity style={[styles.statItem]}>
               <Text style={styles.statNumber}>1</Text>
               <Text style={styles.statLabel}>Đã tuyển</Text>
-            </View>
+            </TouchableOpacity>
           </View>
           {/* Dropdown hiển thị ngay dưới nút */}
           {visibleStatus && (
@@ -472,7 +470,7 @@ const styles = StyleSheet.create({
     gap: 6, // React Native chưa hỗ trợ gap, có thể dùng marginRight
   },
   subText: {
-    fontSize: 13,
+    fontSize: 14,
     color: "#1e2633",
     marginRight: 6,
   },
@@ -488,7 +486,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   statusText: {
-    fontSize: 13,
+    fontSize: 14,
     color: "#48bb56",
   },
   statsRow: {
@@ -581,9 +579,9 @@ dropdownSF: {
   },
   option: { paddingVertical: 10, flexDirection: 'row', gap: 10},
   optionLabel: { fontSize: 15, fontWeight: "bold", marginBottom: 3 },
-  optionDesc: { fontSize: 13, color: "#555" },
+  optionDesc: { fontSize: 14, color: "#555" },
   options: { paddingVertical: 10, lineHeight: 3},
   optionLabels: { fontSize: 15, fontWeight: "bold", marginBottom: 3 },
-  optionDescs: { fontSize: 13, color: "#555" },
+  optionDescs: { fontSize: 14, color: "#555" },
 
 });

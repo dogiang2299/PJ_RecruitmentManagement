@@ -62,15 +62,11 @@ export default function LayoutSystem() {
           label: "Cơ cấu tổ chức",
         },
         {
-          path: "/(tabs)/admin/system/category/member_employee",
+          path: "/(tabs)/admin/system/category/member",
 
-          label: "Đối tượng Nhân viên",
+          label: "Đối tượng",
         },
-        {
-          path: "/(tabs)/admin/system/category/member_user",
-
-          label: "Đối tượng Người dùng",
-        },
+       
         {
           path: "/(tabs)/admin/system/category/jobposition",
 

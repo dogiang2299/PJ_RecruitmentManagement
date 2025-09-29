@@ -95,7 +95,9 @@ export default function LayoutAddRecruitment(){
                 </View>
                     {/* Contain */}
                     <View style={{flex: 1,  height: '100%'}}>
+                        <ScrollView>
                             <Slot></Slot>
+                        </ScrollView>
                     </View>
                 {/* ButtonUp */}
                 <View style={{width: 200, padding: 10, flexDirection: 'column', backgroundColor: '#FFFFFF',  height: '100%'}}>
