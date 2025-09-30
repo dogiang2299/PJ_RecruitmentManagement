@@ -15,11 +15,17 @@ import HoiDongTuyenDung from '../../../../../assets/images/hoidongtuyendung.svg'
 import ChiPhiTuyenDung from '../../../../../assets/images/chiphi2.svg';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
+// Khai báo kiểu dữ liệu cho options
+interface OptionStatus {
+  key: string;
+  label: string;
+  desc: string;
+  color: string;
+}
 export default function LayoutAddRecruitment(){
     
-      const pathname = usePathname();
-
-    const navLeftRecruitment = [
+const pathname = usePathname();
+    const [isStatusDropdownVisible, setIsStatusDropdownVisible] = useState(false);    const navLeftRecruitment = [
         { path: "/(tabs)/admin/recruitment/addrecruitment/addRecruitment", icon: Edit, label: 'Thông tin tuyển dụng'},
         { path: "/(tabs)/admin/recruitment/addrecruitment/implementation_plan", icon: KeHoach, label: 'Kế hoạch thực hiện'},
         { path: "/(tabs)/admin/recruitment/addrecruitment/application_form", icon: MauUngTuyen, label: 'Mẫu ứng tuyển'},
@@ -28,7 +34,8 @@ export default function LayoutAddRecruitment(){
         { path: "/(tabs)/admin/recruitment/addrecruitment/recruitment_board", icon: HoiDongTuyenDung, label: 'Hội đồng tuyển dụng'},
         { path: "/(tabs)/admin/recruitment/addrecruitment/recruitment_costs", icon: ChiPhiTuyenDung, label: 'Chi phí tuyển dụng'}        
     ]
-    const options = [
+    // ⚠️ CHÚ Ý: Mảng options này đã có sẵn trong file của bạn, tôi chỉ định nghĩa lại kiểu OptionStatus
+    const options: OptionStatus[] = [
     {
       key: "public",
       label: "Công khai",
@@ -41,7 +48,30 @@ export default function LayoutAddRecruitment(){
       desc: "Có thể xem trực tiếp được liên kết nhưng không hiển thị trên kênh tuyển dụng.",
       color: "#2680eb",
     },
-  ];
+    {
+      key: "hold",
+      label: "Ngừng nhận hồ sơ",
+      desc: "Tin sẽ được gỡ khỏi các kênh tuyển dụng. Không cho phép nộp đơn ứng tuyển.",
+      color: "#E54848",
+    },
+    {
+      key: "closed",
+      label: "Đóng",
+      desc: "Tin tuyển dụng đã được hoàn tất.",
+      color: "#646464",
+    },
+    ];
+  // Logic lọc trạng thái dựa trên pathname (giả lập Add vs Edit)
+    const filteredOptions = options.filter(opt => {
+        // Nếu path chứa addRecruitment (trang Thêm mới), chỉ hiện Công khai/Nội bộ
+        if (pathname.includes('/addRecruitment')) {
+            return opt.key === 'public' || opt.key === 'internal';
+        }
+        // Các trang con khác (hoặc Edit), hiện tất cả
+        return true; 
+    });
+
+  const [currentStatus, setCurrentStatus] = useState<OptionStatus>(options[0]);
     return(
         <View style={{flex: 1}}>
                 <View>
@@ -101,7 +131,7 @@ export default function LayoutAddRecruitment(){
                     </View>
                 {/* ButtonUp */}
                 <View style={{width: 200, padding: 10, flexDirection: 'column', backgroundColor: '#FFFFFF',  height: '100%'}}>
-                    
+                    {/* NƠI HIỂN THỊ BUTTON LƯU VÀ ĐĂNG TIN VÀ TRẠNG THÁI CỦA TIN TUYỂN DỤNG */}
              
                 </View>
             </View>
